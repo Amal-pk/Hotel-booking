@@ -399,7 +399,7 @@ class _DashboardPageState extends State<DashboardPage> {
             crossAxisCount: 2,
             mainAxisSpacing: 10,
             crossAxisSpacing: 10,
-            childAspectRatio: 1.5,
+            childAspectRatio: 2.5,
             children: stats.map(_statCard).toList(),
           ),
         ],
@@ -710,15 +710,26 @@ class _DashboardPageState extends State<DashboardPage> {
             ],
           ),
           const SizedBox(height: 14),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ..._vacatingRooms
-                  .map((r) => Expanded(child: _vacatingRoomCard(r)))
-                  .expand((w) => [w, const SizedBox(width: 12)]),
-              Expanded(child: _departingSummary()),
-            ],
+          GridView.count(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            crossAxisCount: 4,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 10,
+            childAspectRatio: 1.5,
+            children: _vacatingRooms.map(_vacatingRoomCard).toList(),
           ),
+          // Row(
+          //   crossAxisAlignment: CrossAxisAlignment.start,
+          //   children: [
+          //     ..._vacatingRooms
+          //         .map((r) => Expanded(child: _vacatingRoomCard(r)))
+          //         .expand((w) => [w, const SizedBox(width: 12)]),
+          //     Expanded(child: _departingSummary()),
+          //   ],
+          // ),
+          const SizedBox(height: 14),
+          _departingSummary(),
         ],
       ),
     );

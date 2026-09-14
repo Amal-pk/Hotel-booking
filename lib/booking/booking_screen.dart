@@ -130,11 +130,11 @@ class _BookingPageState extends State<BookingPage> {
     final isWide = width >= 980;
 
     final columns = [
-      _panel(title: '1. Select Room', child: _roomSelectionColumn()),
       _panel(
-        title: '2. Choose Dates & Guests',
+        title: '1. Choose Dates & Guests',
         child: _datesColumn(validation),
       ),
+      _panel(title: '2. Select Room', child: _roomSelectionColumn()),
       _panel(title: '3. Booking Summary', child: _summaryColumn(validation)),
     ];
 
